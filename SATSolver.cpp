@@ -10,9 +10,9 @@ using namespace std;
 //          - setting them to 1 means setting the variable at index i to true
 
 // clauses: 
-//      clauses are stored as a map of indices that locate each variable within the clause
-//      if the value at the index is true (1), the variable is taken as is
-//      if the value at the index if false (0), the variable is negated
+//      clauses are stored as a map of indices that locate each variable within the clause 
+//      if the value at the index is true (1), the variable is taken as is 
+//      if the value at the index if false (0), the variable is negated 
 
 
 class SATInstance{
@@ -26,21 +26,20 @@ public:
         // blank
     }
 
-    void setupInstance(int numVars_){
+    void setupInstance(int numVars_) {
         numVars = numVars_;
         variables = vector<int>(numVars, 0);
     }
 
-    void addClause(unordered_map<int, int> clause){
+    void addClause(unordered_map<int, int> clause) {
         clauses.push_back(clause);
     }
 
-    void setVariableTrue(int index){
+    void setVariableTrue(int index) {
         variables[index] = 1;
-
     }
 
-    void setVariableFalse(int index){
+    void setVariableFalse(int index) {
         variables[index] = 0;
 
     }
