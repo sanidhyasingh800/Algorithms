@@ -1,3 +1,3 @@
-Algorithms designed in CPSC320 and implemented in C++
+Algorithms designed in CPSC320 and implemented in C++ 
 - SAT Solver
-  - bruteForce DFS implementation
+  - BruteForce DFS implementation
