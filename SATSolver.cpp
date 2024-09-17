@@ -122,19 +122,40 @@ public:
 int main(){
     SATSolver solver;
     SATInstance instance;
-    instance.setupInstance(3); // x_0, x_1, x_2
+    instance.setupInstance(8);
+        // Clause 1: ~x0 ∨ ~x1 ∨ ~x2
+    unordered_map<int, int> clause1 = {{0, 0}, {1, 0}, {2, 0}};
 
-    // Clause 1: x0 ∨ x1
-    unordered_map<int, int> clause1 = {{0, 0}, {1, 1}};
-    // Clause 2: ~x0 ∨ ~x2
-    unordered_map<int, int> clause2 = {{0, 0}, {2, 0}};
-    // Clause 3: x1 ∨ x2
-    unordered_map<int, int> clause3 = {{1, 1}, {2, 1}};
+    // Clause 2: ¬x0 ∨ ~x3
+    unordered_map<int, int> clause2 = {{0, 0}, {3, 0}};
+
+    // Clause 3: x1 ∨ ¬x3 ∨ x4
+    unordered_map<int, int> clause3 = {{1, 1}, {3, 0}, {4, 1}};
+
+    // Clause 4: ¬x1 ∨ x5
+    unordered_map<int, int> clause4 = {{1, 0}, {5, 1}};
+
+    // Clause 5: x2 ∨ ~x5 ∨ x6
+    unordered_map<int, int> clause5 = {{2, 1}, {5, 0}, {6, 1}};
+
+    // Clause 6: ¬x4 ∨ ¬x5 ∨ x7
+    unordered_map<int, int> clause6 = {{4, 0}, {5, 0}, {7, 1}};
+
+    // Clause 7: x6 ∨ x7
+    unordered_map<int, int> clause7 = {{6, 1}, {7, 1}};
+
+    // Clause 8: x0 ∨ x2 ∨ x4 ∨ x6
+    unordered_map<int, int> clause8 = {{0, 1}, {2, 1}, {4, 1}, {6, 1}};
 
     // Add the clauses to the instance
     instance.addClause(clause1);
     instance.addClause(clause2);
     instance.addClause(clause3);
+    instance.addClause(clause4);
+    instance.addClause(clause5);
+    instance.addClause(clause6);
+    instance.addClause(clause7);
+    instance.addClause(clause8);
     cout << solver.solve(instance) << endl;
     instance.printResults();
 
